@@ -21,6 +21,15 @@ function Home() {
           <h2>Contact</h2>
           <p>Feel free to <Link to="/contact">reach out</Link> if you'd like to work together or learn more about my projects.</p>
         </section>
+
+        <section>
+          <h2>Blog Tab</h2>
+          <p><Link to="/blogs">Here are my blogs</Link></p>
+        </section>
+
+        <section>
+          <p><Link to="/create-blog">Create a blog</Link></p>
+        </section>
       </header>
     </div>
   );
