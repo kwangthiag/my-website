@@ -2,6 +2,22 @@ const fs = require('fs');
 const path = require('path');
 const Blog = require('../models/blog');
 
+// Get a blog by ID
+const getBlog = async (req, res) => {
+  const blogId = req.params.id; // Get the blog ID from the URL parameters
+
+  try {
+    const blog = await Blog.findByPk(blogId);
+    if (!blog) {
+      return res.status(404).json({ message: 'Blog not found' });
+    }
+    res.json(blog);
+  } catch (error) {
+    // Log the error and return a 500 error response
+    console.error('Error fetching blog:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
 
 // Get all blogs
 const getBlogs = async (req, res) => {
@@ -120,6 +136,7 @@ const deleteBlog = async (req, res) => {
 };
 
 module.exports = {
+  getBlog,
   getBlogs,
   createBlog,
   updateBlog,

@@ -1,5 +1,5 @@
 const express = require('express');
-const { getBlogs, createBlog, updateBlog, deleteBlog } = require('../controllers/blogController');
+const { getBlog, getBlogs, createBlog, updateBlog, deleteBlog } = require('../controllers/blogController');
 const multer = require('multer');
 const path = require('path');
 
@@ -21,7 +21,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Define routes for blogs
-router.get('/blogs', getBlogs);        // GET /api/blogs
+router.get('/blogs', getBlogs);      // GET /api/blogs
+router.get('/blogs/:id', getBlog);  
 router.post('/blogs', upload.single('media'), createBlog);     // POST /api/blogs
 router.put('/blogs/:id', upload.single('media'), updateBlog);  // PUT /api/blogs/:id
 router.delete('/blogs/:id', deleteBlog); // DELETE /api/blogs/:id

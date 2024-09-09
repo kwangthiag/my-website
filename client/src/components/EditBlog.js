@@ -12,6 +12,7 @@ function EditBlog() {
     const fetchBlog = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+        console.log(response.data);
         setTitle(response.data.title);
         setBody(response.data.body);
       } catch (error) {
@@ -21,6 +22,7 @@ function EditBlog() {
     fetchBlog();
   }, [id]);
 
+  console.log(title, body);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
