@@ -40,7 +40,8 @@ const createBlog = async (req, res) => {
     
     const { title, body } = req.body;
     const mediaFile = req.file; 
-    const filePath = req.file.path.replace(/\\/g, '/');
+    let filePath = "";
+    if (mediaFile) filePath = req.file.path.replace(/\\/g, '/');
     console.log(filePath);
     const newBlog = await Blog.create({
       title,
@@ -60,7 +61,8 @@ const updateBlog = async (req, res) => {
   const { id } = req.params;
   const { title, body } = req.body;
   const mediaFile = req.file;
-  const filePath = req.file.path.replace(/\\/g, '/');
+  let filePath = "";
+  if (mediaFile) filePath = req.file.path.replace(/\\/g, '/');
   try {
     const blog = await Blog.findByPk(id);
     if (blog) {
@@ -76,7 +78,7 @@ const updateBlog = async (req, res) => {
           }
         });
       }
-      blog.media = mediaFile ? filePath : null;
+      blog.media = mediaFile ? filePath : blog.media;
       await blog.save();
       res.json(blog);
     } else {
