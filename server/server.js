@@ -5,6 +5,15 @@ const cors = require('cors');
 const path = require('path');
 const sequelize = require('./config/db');
 const blogRoutes = require('./routes/blogRoutes');
+const fs = require('fs');
+const uploadsDir = path.join(__dirname, './uploads');
+
+console.log(uploadsDir);
+// Ensure the uploads directory exists
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
 
 const app = express();
 

@@ -8,7 +8,9 @@ const router = express.Router();
 // Set up storage for multer to keep the original file extension
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+    const uploadPath = path.join(__dirname, '../uploads');  // Use absolute path
+    console.log('Multer is saving to:', uploadPath);
+    cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
     // Generate a unique filename but keep the original extension

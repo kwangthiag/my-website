@@ -63,13 +63,13 @@ function BlogList() {
               <>
                 {/* If it's an image */}
                 {blog.media.endsWith('.jpg') || blog.media.endsWith('.png') || blog.media.endsWith('.jpeg') ? (
-                  <img src={`http://localhost:5000/${blog.media}`} alt={blog.title} style={{ maxWidth: '100%', height: 'auto' }} />
+                  <img src={`http://localhost:5000${blog.media}`} alt={`http://localhost:5000${blog.media}`} style={{ maxWidth: '100%', height: 'auto' }} />
                 ) : null}
 
                 {/* If it's a video */}
                 {blog.media.endsWith('.mp4') || blog.media.endsWith('.webm') ? (
                   <video controls style={{ maxWidth: '100%', height: 'auto' }}>
-                    <source src={`http://localhost:5000/${blog.media}`} type="video/mp4" />
+                    <source src={`http://localhost:5000${blog.media}`} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 ) : null}
