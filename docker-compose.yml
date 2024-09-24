@@ -1,39 +1,45 @@
 services:
   frontend:
-    build:
-      context: ./client  # Path to the frontend directory where the Dockerfile is located
-      dockerfile: Dockerfile
-    ports:
-      - "3000:80"  # Map port 3000 on localhost to port 80 in the container (Nginx)
+    image: hardenisthegoat/my-website-frontend-image:latest  # Use your prebuilt frontend image
     networks:
       - mynetwork
 
   backend:
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    image: hardenisthegoat/my-website-backend-image:latest  # Use your prebuilt backend image
     ports:
-      - "5000:5000"  # Maps your local port 5000 to the container's port 5000
+      - "5000:5000"  # Expose backend on port 5000
     depends_on:
-      - db  # Ensure db starts before backend
-    env_file:
-      - server/.env 
+      - db
     volumes:
-      - .:/app  # Mounts your app code to the container for development purposes
-      - ./server/uploads:/app/server/uploads  # Mount the uploads directory as a volume
+      - ./server/uploads:/app/uploads
+    env_file:
+      - server/.env  # Load environment variables
     networks:
       - mynetwork
 
   db:
-    image: postgres:13  # Use the official PostgreSQL image
+    image: postgres:13  # Use the official Postgres image
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: p@ssword
       POSTGRES_DB: blogdb
     ports:
-      - "5432:5432"  # Map your local port 5432 to the container's port 5432
+      - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data  # Persist the database data
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+  nginx:
+    image: nginx:latest  # Nginx service
+    ports:
+      - "80:80"  # Expose Nginx on port 80 (for frontend + API proxying)
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf  # Custom Nginx configuration
+      - ./client/build:/usr/share/nginx/html  # Serve frontend static files from here
+    depends_on:
+      - frontend
+      - backend
     networks:
       - mynetwork
 
@@ -42,3 +48,4 @@ volumes:
 
 networks:
   mynetwork:
+    driver: bridge

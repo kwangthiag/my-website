@@ -15,7 +15,7 @@ function CreateBlog() {
     formData.append('media', media);
 
     try {
-      await axios.post('http://localhost:5000/api/blogs', formData, {
+      await axios.post('/api/blogs', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
