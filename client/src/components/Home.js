@@ -7,7 +7,7 @@ function Home() {
     <div className="Home">
       <header className="Home-header">
         <h1>Welcome to My Personal Website!</h1>
-        <p>This is the homepage of my portfolio website.</p>
+        <p>This is the homepage of my personal website.</p>
         
         <section>
           <h2>About Me</h2>
