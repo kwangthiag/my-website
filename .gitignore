@@ -1,0 +1,47 @@
+# Sensitive config files
+.env
+# Ignore .env in the server directory
+/server/.env
+
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Build directories
+dist/
+build/
+
+# Log files
+*.log
+
+# OS-specific files
+.DS_Store
+.AppleDouble
+Thumbs.db
+desktop.ini
+
+# IDE/editor config files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+
+# Docker
+**/docker-volumes/
+docker-compose.override.yml
+
+# Test coverage and temporary files
+coverage/
+*.tmp
+*.swp
+
+# Database files
+*.sqlite
+*.sqlite3
+
+# SSL certificates and private keys
+*.pem
+*.key
