@@ -11,7 +11,7 @@ function EditBlog() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+        const response = await axios.get(`/api/blogs/${id}`);
         console.log(response.data);
         setTitle(response.data.title);
         setBody(response.data.body);
@@ -32,7 +32,7 @@ function EditBlog() {
     formData.append('media', media);
 
     try {
-      await axios.put(`http://localhost:5000/api/blogs/${id}`, formData, {
+      await axios.put(`/api/blogs/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

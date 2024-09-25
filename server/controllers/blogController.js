@@ -57,7 +57,9 @@ const createBlog = async (req, res) => {
     const { title, body } = req.body;
     const mediaFile = req.file; 
     let filePath = "";
-    if (mediaFile) filePath = req.file.path.replace(/\\/g, '/');
+    if (mediaFile) {
+      filePath = `/uploads/${mediaFile.filename}`;  // Construct the relative path for frontend access
+    }
     console.log(filePath);
     const newBlog = await Blog.create({
       title,
@@ -78,14 +80,16 @@ const updateBlog = async (req, res) => {
   const { title, body } = req.body;
   const mediaFile = req.file;
   let filePath = "";
-  if (mediaFile) filePath = req.file.path.replace(/\\/g, '/');
+  if (mediaFile) {
+    filePath = `/uploads/${mediaFile.filename}`;  // Construct the relative path for frontend access
+  }
   try {
     const blog = await Blog.findByPk(id);
     if (blog) {
       blog.title = title || blog.title;
       blog.body = body || blog.body;
       if (blog.media && mediaFile) {
-        const mediaPath = path.join(__dirname, '..', blog.media);
+        const mediaPath =  path.join(__dirname, '..', blog.media);
         fs.unlink(mediaPath, (err) => {
           if (err) {
             console.error('Failed to update media file:', err);
@@ -114,7 +118,7 @@ const deleteBlog = async (req, res) => {
       // Check if the blog has a media file
       if (blog.media) {
         // Get the path to the media file
-        const mediaPath = path.join(__dirname, '..', blog.media);
+        const mediaPath =  path.join(__dirname, '..', blog.media);
         console.log(mediaPath);
         // Delete the media file from the file system
         fs.unlink(mediaPath, (err) => {
