@@ -39,6 +39,8 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf  # Custom Nginx configuration
       - ./client/build:/usr/share/nginx/html  # Serve frontend static files from here
+      - /etc/letsencrypt/live/tankt78249.xyz:/etc/letsencrypt/live/tankt78249.xyz:ro
+      - /etc/letsencrypt/archive/tankt78249.xyz:/etc/letsencrypt/archive/tankt78249.xyz:ro
     depends_on:
       - frontend
       - backend
