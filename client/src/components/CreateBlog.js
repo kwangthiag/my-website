@@ -38,7 +38,7 @@ function CreateBlog() {
       </div>
       <div>
         <label>Upload Photo or Video:</label>
-        <input type="file" accept="image/*, video/*" onChange={(e) => setMedia(e.target.files[0])} />
+        <input type="file" accept="image/*" onChange={(e) => setMedia(e.target.files[0])} />
       </div>
       <button type="submit">Create Blog</button>
     </form>

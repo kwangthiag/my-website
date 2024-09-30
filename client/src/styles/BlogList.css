@@ -1,0 +1,84 @@
+
+.blog-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+    background-color: #101010; /* Dark background */
+    color: #f1f1f1; /* Light text */
+}
+
+.blog-header {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 0px;
+}
+
+.button {
+    background-color: #575b59;
+    border:none;
+    border-radius: 20px;
+    color: white;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 4px 10px;
+}
+.button2 {
+    background-color: #eaeaea;
+    border:none;
+    border-radius: 20px;
+    color: black;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 4px 10px;
+}
+
+.blog-list {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1000px;
+    height: 300px; /* Set a fixed height to force scrolling */
+    overflow-y: auto;
+    background-color: #333; /* Slightly lighter background for the blog list */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+/* Footer-like pagination controls */
+.pagination-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #222;
+    text-align: center;
+    color: #fff;
+    border-top: 1px solid #444;
+    z-index: 10; /* Ensure the footer stays on top of content */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
