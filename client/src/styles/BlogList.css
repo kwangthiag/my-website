@@ -28,7 +28,19 @@
     display: inline-block;
     font-size: 1rem;
     margin: 4px 10px;
-  }
+}
+.button2 {
+    background-color: #eaeaea;
+    border:none;
+    border-radius: 20px;
+    color: black;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 4px 10px;
+}
 
 .blog-list {
     flex-grow: 1;
