@@ -54,7 +54,7 @@ const getBlogs = async (req, res) => {
 const createBlog = async (req, res) => {
   try {
     
-    const { title, body } = req.body;
+    const { title, body, code } = req.body;
     const mediaFile = req.file; 
     let filePath = "";
     if (mediaFile) {
@@ -65,6 +65,7 @@ const createBlog = async (req, res) => {
       title,
       body,
       media: mediaFile ? filePath : null, 
+      code
     });
 
     res.status(201).json(newBlog);
@@ -77,7 +78,7 @@ const createBlog = async (req, res) => {
 // Update a blog
 const updateBlog = async (req, res) => {
   const { id } = req.params;
-  const { title, body } = req.body;
+  const { title, body, code } = req.body;
   const mediaFile = req.file;
   let filePath = "";
   if (mediaFile) {
@@ -88,6 +89,7 @@ const updateBlog = async (req, res) => {
     if (blog) {
       blog.title = title || blog.title;
       blog.body = body || blog.body;
+      blog.code = code;
       if (blog.media && mediaFile) {
         const mediaPath =  path.join(__dirname, '..', blog.media);
         fs.unlink(mediaPath, (err) => {

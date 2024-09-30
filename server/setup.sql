@@ -17,10 +17,9 @@ CREATE TABLE blogs (
   title VARCHAR(255) NOT NULL,
   body TEXT NOT NULL,
   media VARCHAR(500),
+  code TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-ALTER TABLE blogs ADD COLUMN media VARCHAR(500);
 
 -- -- Insert some initial data into the blogs table
 -- INSERT INTO blogs (title, body) VALUES 

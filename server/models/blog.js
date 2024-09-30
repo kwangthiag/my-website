@@ -14,6 +14,10 @@ const Blog = sequelize.define('Blog', {
     type: DataTypes.STRING,  
     allowNull: true,
   },
+  code: {
+    type: DataTypes.STRING,  
+    allowNull: true,
+  },
   createdAt: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW

@@ -82,3 +82,20 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+.limited-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;   /* Limits the text to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title {
+    color: white; /* Initial color */
+    transition: color 0.3s ease; /* Smooth transition when changing color */
+}
+
+.title:hover {
+    color: black; /* Color changes on hover */
+}
