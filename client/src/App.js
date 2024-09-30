@@ -5,6 +5,7 @@ import Contact from './components/Contact';
 import BlogList from './components/BlogList';
 import CreateBlog from './components/CreateBlog';
 import EditBlog from './components/EditBlog';
+import Blog from './components/Blog';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -58,6 +59,7 @@ function App() {
             <Route path="/blogs" element={<BlogList />} />
             <Route path="/create-blog" element={<CreateBlog />} />
             <Route path="/edit-blog/:id" element={<EditBlog />} />
+            <Route path="/blogs/:id" element={<Blog />} />
           </Routes>
         </Suspense>
       </Router>

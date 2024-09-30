@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/BlogList.css'; 
 
@@ -57,16 +58,16 @@ function BlogList() {
         <ul>
           {blogs.map(blog => (
             <li key={blog.id}>
-              <h2>{blog.title}</h2>
-              <p>{blog.body}</p>
-              <p>{blog.code}</p>
+              <h2 class='title' onClick={() => window.location.href = `/blogs/${blog.id}`}>{blog.title}</h2>
+              <p class='limited-lines'>{blog.body}</p>
+              {/* <p>{blog.code}</p>
               {blog.media && (
                 <>
                   {blog.media.endsWith('.jpg') || blog.media.endsWith('.png') || blog.media.endsWith('.jpeg') ? (
                     <img src={`${blog.media}`} alt={`${blog.media}`} />
                   ) : null}
                 </>
-              )}
+              )} */}
               <button class="button" onClick={() => handleDelete(blog.id)}>Delete</button>
               <button class="button" onClick={() => window.location.href = `/edit-blog/${blog.id}`}>Edit</button>
             </li>
