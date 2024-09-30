@@ -5,6 +5,7 @@ function CreateBlog() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [media, setMedia] = useState(null);
+  const [code, setCode] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,6 +14,7 @@ function CreateBlog() {
     formData.append('title', title);
     formData.append('body', body);
     formData.append('media', media);
+    formData.append('code', code);
 
     try {
       await axios.post('/api/blogs', formData, {
@@ -20,7 +22,7 @@ function CreateBlog() {
           'Content-Type': 'multipart/form-data'
         }
       });
-      window.location.href = '/'; // Redirect after successful creation
+      window.location.href = '/blogs'; // Redirect after successful creation
     } catch (err) {
       console.error('Error creating blog:', err);
     }
@@ -35,6 +37,10 @@ function CreateBlog() {
       <div>
         <label>Body:</label>
         <textarea value={body} onChange={(e) => setBody(e.target.value)} required />
+      </div>
+      <div>
+        <label>Code:</label>
+        <input type="text" value={code} onChange={(e) => setCode(e.target.value)} />
       </div>
       <div>
         <label>Upload Photo or Video:</label>

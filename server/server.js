@@ -20,7 +20,7 @@ app.use(express.json());
 
 // Enable CORS for requests from frontend
 app.use(cors({
-  origin: ['http://55.255.32.31', 'http://your-domain.com'],  // Use env variable or localhost
+  origin: ['http://55.255.32.31', 'http://localhost:3000'],  // Use env variable or localhost
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 

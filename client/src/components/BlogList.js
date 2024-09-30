@@ -59,6 +59,7 @@ function BlogList() {
             <li key={blog.id}>
               <h2>{blog.title}</h2>
               <p>{blog.body}</p>
+              <p>{blog.code}</p>
               {blog.media && (
                 <>
                   {blog.media.endsWith('.jpg') || blog.media.endsWith('.png') || blog.media.endsWith('.jpeg') ? (

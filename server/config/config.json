@@ -1,0 +1,17 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "p@ssword",
+    "database": "blogdb",
+    "host": "db",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "admin",
+    "password": "p@ssword",
+    "database": "blogdb",
+    "host": "db",
+    "dialect": "postgres",
+    "logging": false
+  }
+}

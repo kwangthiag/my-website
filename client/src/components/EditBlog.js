@@ -7,6 +7,7 @@ function EditBlog() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [media, setMedia] = useState(null);
+  const [code, setCode] = useState('');
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -15,6 +16,8 @@ function EditBlog() {
         console.log(response.data);
         setTitle(response.data.title);
         setBody(response.data.body);
+        setCode(response.data.code);
+        // console.log(code);
       } catch (error) {
         console.error('Error fetching blog:', error);
       }
@@ -22,7 +25,7 @@ function EditBlog() {
     fetchBlog();
   }, [id]);
 
-  console.log(title, body);
+  console.log(title, body, code);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,6 +33,7 @@ function EditBlog() {
     formData.append('title', title);
     formData.append('body', body);
     formData.append('media', media);
+    formData.append('code', code);
 
     try {
       await axios.put(`/api/blogs/${id}`, formData, {
@@ -37,7 +41,7 @@ function EditBlog() {
           'Content-Type': 'multipart/form-data'
         }
       });
-      window.location.href = '/'; // Redirect after successful update
+      window.location.href = '/blogs'; // Redirect after successful update
     } catch (err) {
       console.error('Error updating blog:', err);
     }
@@ -52,6 +56,10 @@ function EditBlog() {
       <div>
         <label>Body:</label>
         <textarea value={body} onChange={(e) => setBody(e.target.value)} required />
+      </div>
+      <div>
+        <label>Code:</label>
+        <input type="text" value={code} onChange={(e) => setCode(e.target.value)} />
       </div>
       <div>
         <label>Upload New Photo or Video:</label>
