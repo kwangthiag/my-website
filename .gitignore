@@ -2,7 +2,7 @@
 .env
 # Ignore .env in the server directory
 /server/.env
-
+/server/uploads
 
 # Dependency directories
 node_modules/
