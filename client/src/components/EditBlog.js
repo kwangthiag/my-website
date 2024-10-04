@@ -13,11 +13,9 @@ function EditBlog() {
     const fetchBlog = async () => {
       try {
         const response = await axios.get(`/api/blogs/${id}`);
-        console.log(response.data);
         setTitle(response.data.title);
         setBody(response.data.body);
         setCode(response.data.code);
-        // console.log(code);
       } catch (error) {
         console.error('Error fetching blog:', error);
       }
@@ -25,7 +23,6 @@ function EditBlog() {
     fetchBlog();
   }, [id]);
 
-  console.log(title, body, code);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -48,25 +45,40 @@ function EditBlog() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Title:</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+    <div className="container create-blog" style={{ height:'100%' }} >
+      <form onSubmit={handleSubmit} className="form-container"  style={{ height:'100%' }}>
+          <div>
+              <label>Title:</label>
+              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required placeholder="Enter title" />
+          </div>
+          <div>
+              <label>Body:</label>
+              <textarea value={body} onChange={(e) => setBody(e.target.value)} required placeholder="Enter body text here"></textarea>
+          </div>
+          <div>
+              <label>Code:</label>
+              <textarea className="code-area" value={code} onChange={(e) => setCode(e.target.value)} placeholder="Enter code here"></textarea>
+          </div>
+          <div>
+              <label>Upload Photo or Video:</label>
+              <input type="file" accept="image/*" onChange={(e) => setMedia(e.target.files[0])} />
+          </div>
+          <button type="submit">Create Blog</button>
+      </form>
+
+      <div className="preview-container">
+          <div className="preview-title">{title || "Preview Title"}</div>
+          <div className="preview-body">{body || "Preview of body content..."}</div>
+          <div className="preview-code">
+              {code || "Preview of code content..."}
+          </div>
+          {media && (
+              <div className="preview-media">
+                  <img src={URL.createObjectURL(media)} alt="Preview" />
+              </div>
+          )}
       </div>
-      <div>
-        <label>Body:</label>
-        <textarea value={body} onChange={(e) => setBody(e.target.value)} required />
-      </div>
-      <div>
-        <label>Code:</label>
-        <input type="text" value={code} onChange={(e) => setCode(e.target.value)} />
-      </div>
-      <div>
-        <label>Upload New Photo or Video:</label>
-        <input type="file" accept="image/*" onChange={(e) => setMedia(e.target.files[0])} />
-      </div>
-      <button type="submit">Update Blog</button>
-    </form>
+  </div>
   );
 }
 
