@@ -1,0 +1,68 @@
+.blog-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+    background-color: #101010; /* Dark background */
+    color: #f1f1f1; /* Light text */
+}
+
+.code-window {
+    overflow-y: auto;
+    border-radius:20;
+    background-color: #000000;
+    color: #f1f1f1;
+    height:90%;
+    counter-reset: linenumber;
+    white-space: pre-wrap;
+    padding-left: 3%; /* Adjust to make space for line numbers */
+    position: relative;
+    font-size: 14px;
+}
+
+.code-window div::before {
+    counter-increment: linenumber;
+    content: counter(linenumber);
+    display: inline-block;
+    width: 25px; /* Width for the line numbers */
+    margin-right: 10px;
+    color: #888;
+    text-align: right;
+}
+
+.page-window {
+    height: 100px;
+}
+
+.container-fluid {
+    color: #E5E5E5
+}
+
+.container-fluid .bg-secondary {
+    background-color: #333333 !important;
+}
+
+
+.container-fluid .bg-dark {
+    background-color: #101010 !important;
+}
+
+
+.container-fluid .header {
+    display: flex;
+    font-size: 2vw;
+    /* max-width: fit-content; */
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    padding-left: 10%;
+    padding-bottom: 5%;
+}
+
+
+
+body .container-fluid  {
+    font-size: 17px !important;
+}

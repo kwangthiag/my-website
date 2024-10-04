@@ -48,3 +48,7 @@ code {
   /* max-width: 1000px; Set a max-width to avoid stretching */
   padding: 0 20px;
 }
+
+body {
+  font-size: 18px; 
+}
